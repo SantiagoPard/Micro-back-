@@ -31,5 +31,7 @@ $router->delete('estudiantes/{codigo}','EstudianteController@destroy');
 // */
 
 $router->get('actividades/{codigo}','ActividadController@show');
+$router->get('actividad/{id}','ActividadController@showAct');
 $router->post('actividades','ActividadController@store');
+$router->put('actividades/{id}','ActividadController@update');
 $router->delete('actividades/{id}','ActividadController@destroy');

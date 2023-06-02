@@ -51,10 +51,17 @@ class ActividadController extends Controller
     {
         $actividad = Actividad::all();
         $estudiante = Estudiante::find($codigo);
-        $actividad = Actividad::where('codigo_estudiante',$codigo)->get();
+        $actividad = Actividad::where('codigo_estudiante', $codigo)->get();
         return response(json_encode([
             "data" => $actividad,
             "data2" => $estudiante
+        ]));
+    }
+    public function showAct($id)
+    {
+        $actividad = Actividad::find($id);
+        return response(json_encode([
+            "data" => $actividad,
         ]));
     }
 
@@ -68,12 +75,11 @@ class ActividadController extends Controller
     public function update(Request $request, $id)
     {
         $actividad = Actividad::find($id);
-        $actividad->descripcion = $request->input('name');
-        $actividad->nota = $request->input('username');
-        $actividad->codigo_estudiante = $request->input('password');
+        $actividad->descripcion = $request->input('descripcion');
+        $actividad->nota = $request->input('nota');
         $actividad->save();
         return response(json_encode([
-            "data"=>"registro modificado"
+            "data" => "registro modificado"
         ]));
     }
 
@@ -86,14 +92,14 @@ class ActividadController extends Controller
     public function destroy($id)
     {
         $actividad = Actividad::find($id);
-        if(empty($actividad)){
+        if (empty($actividad)) {
             return response(json_encode([
                 "data" => "El Actividad no existe"
-            ]),404);
+            ]), 404);
         }
-        $actividad -> delete();
+        $actividad->delete();
         return response(json_encode([
-            "data"=>"Registro Eliminado"
+            "data" => "Registro Eliminado"
         ]));
     }
 }
