@@ -50,9 +50,11 @@ class ActividadController extends Controller
     public function show($codigo)
     {
         $actividad = Actividad::all();
+        $estudiante = Estudiante::find($codigo);
         $actividad = Actividad::where('codigo_estudiante',$codigo)->get();
         return response(json_encode([
-            "data" => $actividad
+            "data" => $actividad,
+            "data2" => $estudiante
         ]));
     }
 
@@ -75,23 +77,23 @@ class ActividadController extends Controller
     //     ]));
     // }
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy($id)
-    // {
-    //     $actividad = Actividad::find($id);
-    //     if(empty($actividad)){
-    //         return response(json_encode([
-    //             "data" => "El Actividad no existe"
-    //         ]),404);
-    //     }
-    //     $actividad -> delete();
-    //     return response(json_encode([
-    //         "data"=>"Registro Eliminado"
-    //     ]));
-    // }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $actividad = Actividad::find($id);
+        if(empty($actividad)){
+            return response(json_encode([
+                "data" => "El Actividad no existe"
+            ]),404);
+        }
+        $actividad -> delete();
+        return response(json_encode([
+            "data"=>"Registro Eliminado"
+        ]));
+    }
 }

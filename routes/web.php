@@ -23,3 +23,4 @@ $router->post('estudiantes','EstudianteController@store');
 $router->put('estudiantes/{codigo}','EstudianteController@update');
 $router->delete('estudiantes/{codigo}','EstudianteController@destroy');
 $router->get('actividades/{codigo}','ActividadController@show');
+$router->delete('actividades/{id}','ActividadController@destroy');
