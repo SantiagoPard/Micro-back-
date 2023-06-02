@@ -10,7 +10,7 @@ class Actividad extends Model
 
     public function estudiante()
     {
-        return $this->belongsTo(Estudiante::class,"id");
+        return $this->belongsTo(Estudiante::class,"codigo");
     }
     
 }
