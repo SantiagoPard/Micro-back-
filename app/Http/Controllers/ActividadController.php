@@ -13,16 +13,7 @@ class ActividadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-
-    //     $actividades = Actividad::all();
-    //     $data = json_encode([
-    //         "data" => $actividades
-    //     ]);
-    //     return response($data,200);
-    // }
-
+    
     /**
      * Store a newly created resource in storage.
      *
