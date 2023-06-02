@@ -63,9 +63,9 @@ class EstudianteController extends Controller
     public function update(Request $request, $codigo)
     {
         $estudiante = Estudiante::find($codigo);
-        $estudiante->name = $request->input('name');
-        $estudiante->username = $request->input('username');
-        $estudiante->password = $request->input('password');
+        $estudiante->codigo = $request->input('codigo');
+        $estudiante->nombres = $request->input('nombres');
+        $estudiante->apellidos = $request->input('apellidos');
         $estudiante->save();
         return response(json_encode([
             "data"=>"registro modificado"
