@@ -15,7 +15,7 @@ class ActividadController extends Controller
      */
     // public function index()
     // {
-    
+
     //     $actividades = Actividad::all();
     //     $data = json_encode([
     //         "data" => $actividades
@@ -23,30 +23,30 @@ class ActividadController extends Controller
     //     return response($data,200);
     // }
 
-    // /**
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function store(Request $request)
-    // {
-    //     $actividad = new Actividad();
-    //     $actividad->name = $request->input('name');
-    //     $actividad->username = $request->input('username');
-    //     $actividad->password = $request->input('password');
-    //     $actividad->save();
-    //     return response(json_encode([
-    //         "data" => "Actividad Registrado"
-    //     ]));
-    // }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $actividad = new Actividad();
+        $actividad->descripcion = $request->input('descripcion');
+        $actividad->nota = $request->input('nota');
+        $actividad->codigo_estudiante = $request->input('codigo_estudiante');
+        $actividad->save();
+        return response(json_encode([
+            "data" => "Actividad Registrado"
+        ]));
+    }
 
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($codigo)
     {
         $actividad = Actividad::all();
@@ -65,17 +65,17 @@ class ActividadController extends Controller
     //  * @param  int  $id
     //  * @return \Illuminate\Http\Response
     //  */
-    // public function update(Request $request, $id)
-    // {
-    //     $actividad = Actividad::find($id);
-    //     $actividad->name = $request->input('name');
-    //     $actividad->username = $request->input('username');
-    //     $actividad->password = $request->input('password');
-    //     $actividad->save();
-    //     return response(json_encode([
-    //         "data"=>"registro modificado"
-    //     ]));
-    // }
+    public function update(Request $request, $id)
+    {
+        $actividad = Actividad::find($id);
+        $actividad->descripcion = $request->input('name');
+        $actividad->nota = $request->input('username');
+        $actividad->codigo_estudiante = $request->input('password');
+        $actividad->save();
+        return response(json_encode([
+            "data"=>"registro modificado"
+        ]));
+    }
 
     /**
      * Remove the specified resource from storage.
