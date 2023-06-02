@@ -30,9 +30,9 @@ class EstudianteController extends Controller
     public function store(Request $request)
     {
         $estudiante = new Estudiante();
-        $estudiante->name = $request->input('name');
-        $estudiante->username = $request->input('username');
-        $estudiante->password = $request->input('password');
+        $estudiante->codigo = $request->input('codigo');
+        $estudiante->nombres = $request->input('nombres');
+        $estudiante->apellidos = $request->input('apellidos');
         $estudiante->save();
         return response(json_encode([
             "data" => "Estudiante Registrado"
