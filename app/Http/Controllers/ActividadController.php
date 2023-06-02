@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Actividad;
+use App\Models\Estudiante;
 use Illuminate\Http\Request;
 
 class ActividadController extends Controller
@@ -12,14 +13,15 @@ class ActividadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $actividades = Actividad::all();
-        $data = json_encode([
-            "data" => $actividades
-        ]);
-        return response($data,200);
-    }
+    // public function index()
+    // {
+    
+    //     $actividades = Actividad::all();
+    //     $data = json_encode([
+    //         "data" => $actividades
+    //     ]);
+    //     return response($data,200);
+    // }
 
     // /**
     //  * Store a newly created resource in storage.
@@ -45,13 +47,14 @@ class ActividadController extends Controller
     //  * @param  int  $id
     //  * @return \Illuminate\Http\Response
     //  */
-    // public function show($id)
-    // {
-    //     $actividad = Actividad::find($id);
-    //     return response(json_encode([
-    //         "data" => $actividad
-    //     ]));
-    // }
+    public function show($codigo)
+    {
+        $actividad = Actividad::all();
+        $actividad = Actividad::where('codigo_estudiante',$codigo)->get();
+        return response(json_encode([
+            "data" => $actividad
+        ]));
+    }
 
     // /**
     //  * Update the specified resource in storage.
